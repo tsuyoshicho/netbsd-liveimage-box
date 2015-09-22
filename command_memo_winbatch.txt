@@ -1,0 +1,21 @@
+
+# in windows / batch file
+
+set VDI_FILE=test.vdi
+set TEMPLATE_FILE=test.ovf
+set RESULT_FILE=result.ovf
+
+# replace for vid UUID(only auto generate)
+%VBOX_MSI_INSTALL_PATH%vboxmanage internalcommands sethduuid %VDI_FILE% > uuid_result.txt
+
+# split only UUID
+cat uuid_result.txt | sed -e s/[^:]*: *\([0-9a-fA-F-]*\).*/\1/ > uuid.txt
+
+
+set /p UUID=<uuid.txt
+
+# replace for file UUID
+sed -e s/UUIDREPLACE/%UUID%/g %TEMPLATE_FILE% > %RESULT_FILE%
+
+del uuid_result.txt uuid.txt
+
