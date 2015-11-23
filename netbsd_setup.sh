@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# need remake!!
 # need tools
 # sed,curl,git
 # packer,virtualbox,vagrant
@@ -16,7 +16,7 @@ UUID_RESULT=uuid_result.txt
 UUID_FILE=uuid.txt
 
 # 1.download vdi
-curl -L -O $URL -o $ARCHIVE_FILE
+curl -L $URL -o $ARCHIVE_FILE
 
 # 2.git clone for ovf template file
 #git clone <url>
